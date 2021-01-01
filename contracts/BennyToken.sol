@@ -2,12 +2,12 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 contract BennyToken {
-  // string public name = "Benny Token";
-  // string public symbol = "BENNY";
-  // string public standard = "Benny Token v1.0";
+  string public name = "Benny Token";
+  string public symbol = "BENNY";
+  string public standard = "Benny Token v1.0";
   uint256 public totalSupply;
 
-  // event Transfer(address indexed _from, address indexed _to, uint256 _value);
+  event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
   // event Approval(
   //   address indexed _owner,
@@ -15,23 +15,25 @@ contract BennyToken {
   //   uint256 _value
   // );
 
-  // mapping(address => uint256) public balanceOf;
+  mapping(address => uint256) public balanceOf;
+
   // mapping(address => mapping(address => uint256)) public allowance;
 
-  constructor() public {
-    totalSupply = 1000000;
+  constructor(uint256 _initialSupply) public {
+    balanceOf[msg.sender] = _initialSupply;
+    totalSupply = _initialSupply;
   }
 
-  // function transfer(address _to, uint256 _value) public returns (bool success) {
-  //   require(balanceOf[msg.sender] >= _value);
+  function transfer(address _to, uint256 _value) public returns (bool success) {
+    require(balanceOf[msg.sender] >= _value);
 
-  //   balanceOf[msg.sender] -= _value;
-  //   balanceOf[_to] += _value;
+    balanceOf[msg.sender] -= _value;
+    balanceOf[_to] += _value;
 
-  //   emit Transfer(msg.sender, _to, _value);
+    emit Transfer(msg.sender, _to, _value);
 
-  //   return true;
-  // }
+    return true;
+  }
 
   // function approve(address _spender, uint256 _value)
   //   public
