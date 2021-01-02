@@ -13,9 +13,12 @@ contract BennyToken {
     address indexed _owner,
     address indexed _spender,
     uint256 _value
-  ); 
+  );
 
+  // balanceOf is the amount of balance available in owner's account
   mapping(address => uint256) public balanceOf;
+
+  // allowance is the amount which spender is allowed to withdraw from owner
   mapping(address => mapping(address => uint256)) public allowance;
 
   constructor(uint256 _initialSupply) public {
@@ -34,16 +37,16 @@ contract BennyToken {
     return true;
   }
 
-  // function approve(address _spender, uint256 _value)
-  //   public
-  //   returns (bool success)
-  // {
-  //   allowance[msg.sender][_spender] = _value;
+  function approve(address _spender, uint256 _value)
+    public
+    returns (bool success)
+  {
+    allowance[msg.sender][_spender] = _value;
 
-  //   emit Approval(msg.sender, _spender, _value);
+    emit Approval(msg.sender, _spender, _value);
 
-  //   return true;
-  // }
+    return true;
+  }
 
   // Delegated Transfer
   function transferFrom(
@@ -51,16 +54,23 @@ contract BennyToken {
     address _to,
     uint256 _value
   ) public returns (bool success) {
+    // Require _from has enough tokens
     require(_value <= balanceOf[_from]);
+
+    // Require allowance is sufficient enough
     require(_value <= allowance[_from][msg.sender]);
 
+    // Update the balances
     balanceOf[_from] -= _value;
     balanceOf[_to] += _value;
 
+    // Update the allowance
     allowance[_from][msg.sender] -= _value;
 
+    // Transfer event
     emit Transfer(_from, _to, _value);
 
+    // return a boolean
     return true;
   }
 }
