@@ -1,0 +1,26 @@
+{
+  "name": "benny-token",
+  "version": "1.0.0",
+  "description": "Development of my own cryptocurrency and ICO on Ethereum from Scratch",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hbjORbj/benny-token.git"
+  },
+  "keywords": [],
+  "author": "Benny Joo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hbjORbj/benny-token/issues"
+  },
+  "homepage": "https://github.com/hbjORbj/benny-token#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.3.0"
+  }
+}
