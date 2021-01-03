@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+import "@openzeppelin/contracts/math/SafeMath.sol";
+
 contract BennyToken {
+  using SafeMath for uint256;
   string public name = "Benny Token";
   string public symbol = "BENNY";
   string public standard = "Benny Token v1.0";
@@ -29,8 +32,8 @@ contract BennyToken {
   function transfer(address _to, uint256 _value) public returns (bool success) {
     require(balanceOf[msg.sender] >= _value);
 
-    balanceOf[msg.sender] -= _value;
-    balanceOf[_to] += _value;
+    balanceOf[msg.sender] = balanceOf[msg.sender].sub(_value);
+    balanceOf[_to] = balanceOf[_to].add(_value);
 
     emit Transfer(msg.sender, _to, _value);
 
@@ -61,11 +64,11 @@ contract BennyToken {
     require(_value <= allowance[_from][msg.sender]);
 
     // Update the balances
-    balanceOf[_from] -= _value;
-    balanceOf[_to] += _value;
+    balanceOf[_from] = balanceOf[_from].sub(_value);
+    balanceOf[_to] = balanceOf[_to].add(_value);
 
     // Update the allowance
-    allowance[_from][msg.sender] -= _value;
+    allowance[_from][msg.sender] = allowance[_from][msg.sender].sub(_value);
 
     // Transfer event
     emit Transfer(_from, _to, _value);
