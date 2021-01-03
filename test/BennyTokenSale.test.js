@@ -109,4 +109,37 @@ contract("BennyTokenSale", (accounts) => {
         );
       });
   });
+
+  it("ends token sale", function () {
+    return BennyToken.deployed()
+      .then(function (instance) {
+        // Grab token instance first
+        tokenInstance = instance;
+        return BennyTokenSale.deployed();
+      })
+      .then(function (instance) {
+        // Then grab token sale instance
+        tokenSaleInstance = instance;
+        // Try to end sale from account other than the admin
+        return tokenSaleInstance.endSale({ from: buyer });
+      })
+      .then(assert.fail)
+      .catch(function (error) {
+        assert(
+          error.message.indexOf("revert" >= 0, "must be admin to end sale")
+        );
+        // End sale as admin
+        return tokenSaleInstance.endSale({ from: admin });
+      })
+      .then(function (receipt) {
+        return tokenInstance.balanceOf(admin);
+      })
+      .then(function (balance) {
+        assert.equal(
+          balance.toNumber(),
+          999990,
+          "returns all unsold Benny tokens to admin"
+        );
+      });
+  });
 });

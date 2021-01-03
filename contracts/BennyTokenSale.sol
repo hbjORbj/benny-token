@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 
 contract BennyTokenSale {
   using SafeMath for uint256;
-  address admin; // we don't want to expose the address of admin so its visibility is not 'public'
+  address payable admin; // we don't want to expose the address of admin so its visibility is not 'public'
   BennyToken public tokenContract;
   uint256 public tokenPrice;
   uint256 public tokensSold;
@@ -40,10 +40,14 @@ contract BennyTokenSale {
     emit Sell(msg.sender, _numberOfTokens);
   }
 
-  //   function endSale() public {
-  //     require(msg.sender == admin);
-  //     require(tokenContract.transfer(admin, tokenContract.balanceOf(this)));
-
-  //     admin.transfer(address(this).balance);
-  //   }
+  // Ending Token Sale
+  function endSale() public {
+    // Only Admin can end the sale
+    require(msg.sender == admin);
+    require(
+      tokenContract.transfer(admin, tokenContract.balanceOf(address(this)))
+    );
+    // Transfer remaining tokens to admin
+    admin.transfer(address(this).balance);
+  }
 }
