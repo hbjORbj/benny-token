@@ -18,10 +18,10 @@ contract BennyToken {
     uint256 _value
   );
 
-  // balanceOf is the amount of balance available in owner's account
+  // balanceOf is the amount of balance available in given address
   mapping(address => uint256) public balanceOf;
 
-  // allowance is the amount which spender is allowed to withdraw from owner
+  // allowance is the amount which _spender (second arg) is allowed to withdraw from _owner (first arg)
   mapping(address => mapping(address => uint256)) public allowance;
 
   constructor(uint256 _initialSupply) public {
