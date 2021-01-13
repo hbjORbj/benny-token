@@ -6,7 +6,7 @@
     <title>BENNY TOKEN ICO SALE</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
   </head>
-  <body style="background-color: #f5f6fa">
+  <body style="background-color: #f5f6fa; color: #192a56">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -17,24 +17,23 @@
           <hr />
           <br />
         </div>
-        <div class="jumbotron" id="loader">
-          <p class="text-center">Loading...</p>
+        <div id="loader" style="display: none">
+          <h2 class="text-center" style="font-style: italic">Loading...</h2>
         </div>
         <div class="text-center" id="content">
           <p>
-            Introducing BENNY TOKEN! (BENNY) Token price is
-            <span class="token-price"></span> Ether. You currently have
-            <span class="token-balance"></span>&nbsp;BENNY.
+            Introducing BENNY TOKEN! </br> </br> Token price is
+            <span id="token-price"></span> Ether. You currently have
+            <span id="token-balance"></span>&nbsp;BENNY.
           </p>
           <br />
-          <form role="form">
+          <form role="form" onSubmit="App.buyTokens();">
             <div class="form-group">
               <div class="input-group">
                 <input
                   class="form-control input-lg"
                   type="number"
                   id="numberOfTokens"
-                  name="number"
                   value="1"
                   min="1"
                   pattern="[0-9]"
@@ -61,8 +60,8 @@
             ></div>
           </div>
           <p>
-            <span class="tokens-sold"></span> /
-            <span class="tokens-remaining"></span> tokens sold
+            <span id="tokens-sold"></span> /
+            <span id="tokens-remaining"></span> tokens sold
           </p>
           <hr />
           <p id="accountAddress"></p>
