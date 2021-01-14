@@ -6,8 +6,8 @@
 
 **Purchasing Tokens**
 
-[![Screenshot 2021-01-14 at 17 40 56](https://user-images.githubusercontent.com/32841130/104628156-cf1c9100-568f-11eb-812b-d005074e9e88.png)
-](URL)
+![Screenshot 2021-01-14 at 17 40 56](https://user-images.githubusercontent.com/32841130/104628156-cf1c9100-568f-11eb-812b-d005074e9e88.png)
+
 
 **After purchase is successful**
 
