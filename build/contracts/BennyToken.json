@@ -6364,12 +6364,12 @@
         }
       },
       "links": {},
-      "address": "0x6fB8f076447bD9Fd4fFa1F2D8A6Db4E208E03c77",
-      "transactionHash": "0xbf1eabd5da77d075ade7c19a55ada5c1a21eb85be5b9cd064102e74a0035ed4c"
+      "address": "0x9a8d7b23410Db61F8d8C9701C23e1b446A411D06",
+      "transactionHash": "0x703db8dd9f73f170f3d4ffcb0d37eea218cf7e24a63b8778fa2076d0f5eb37cc"
     }
   },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2021-01-13T22:22:36.519Z",
+  "updatedAt": "2021-01-14T17:33:47.060Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

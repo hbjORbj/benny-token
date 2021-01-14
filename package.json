@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/hbjORbj/benny-token#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^3.3.0"
+    "@openzeppelin/contracts": "^3.3.0",
+    "keythereum": "^1.2.0"
   },
   "devDependencies": {
     "lite-server": "^2.6.1"
